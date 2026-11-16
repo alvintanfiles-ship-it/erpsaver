@@ -1,7 +1,7 @@
 {
-  "name": "parkerp-backend",
+  "name": "erpsaver-backend",
   "version": "1.0.0",
-  "description": "ParkERP Backend API - Singapore ERP optimization & parking discovery",
+  "description": "ERPsaver Backend API - Singapore ERP optimization & parking discovery",
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
@@ -47,6 +47,6 @@
     "vitest": "^1.6.0"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=20.0.0 <22.0.0"
   }
 }
