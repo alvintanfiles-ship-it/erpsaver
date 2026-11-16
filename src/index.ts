@@ -15,16 +15,18 @@ import { parkingRouter } from './routes/parking.js';
 import { erpRouter } from './routes/erp.js';
 import { carparkRouter } from './routes/carpark.js';
 import { db } from './db/client.js';
+import { migrate } from './db/migrate.js';
 import { redis, initRedis } from './cache/redis.js';
 import { seed } from './db/seed.js';
-import { migrate } from './db/migrate.js';
-
 
 const app = express();
 const PORT = env.PORT;
 
 // Initialize Redis
 await initRedis();
+
+// Run database migrations FIRST
+await migrate();
 
 // Seed database on startup
 await seed();
@@ -77,7 +79,7 @@ process.on('SIGINT', () => shutdown('SIGINT'));
 
 // Start server
 app.listen(PORT, () => {
-  logger.info({ port: PORT, env: env.NODE_ENV }, 'ParkERP API server started');
+  logger.info({ port: PORT, env: env.NODE_ENV }, 'ERPsaver API server started');
 });
 
 export { app };
