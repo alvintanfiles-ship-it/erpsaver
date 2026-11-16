@@ -17,6 +17,8 @@ import { carparkRouter } from './routes/carpark.js';
 import { db } from './db/client.js';
 import { redis, initRedis } from './cache/redis.js';
 import { seed } from './db/seed.js';
+import { migrate } from './db/migrate.js';
+
 
 const app = express();
 const PORT = env.PORT;
