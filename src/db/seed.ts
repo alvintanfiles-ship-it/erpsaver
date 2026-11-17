@@ -312,8 +312,10 @@ async function seedSampleERP(): Promise<void> {
     return `SRID=4326;LINESTRING(${lng1} ${lat1}, ${lng2} ${lat2})`;
   }
 
-  for (const g of gantries) {
+  for (let i = 0; i < gantries.length; i++) {
+    const g = gantries[i];
     const code = g.gantry_no.toString();
+    const zoneKey = (i + 1).toString(); // zoneMap is indexed by array position (1-based)
     
     // Use individual gantry name (g.name) not the shared charging_point_name
     const specificName = g.name;
@@ -378,8 +380,8 @@ async function seedSampleERP(): Promise<void> {
       direction = 'Citybound';
     }
 
-    // Get zoneId and bearing from mapping
-    const zoneInfo = zoneMap[code] || { zoneId: 'UNKNOWN', bearing: 0 };
+    // Get zoneId and bearing from mapping (use array index, not gantry number)
+    const zoneInfo = zoneMap[zoneKey] || { zoneId: 'UNKNOWN', bearing: 0 };
     const zoneId = zoneInfo.zoneId;
     const bearing = zoneInfo.bearing;
 
