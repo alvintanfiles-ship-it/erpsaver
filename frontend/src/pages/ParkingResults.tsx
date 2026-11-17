@@ -38,7 +38,7 @@ export function ParkingResults() {
         lng: dest.lng,
         radius: 1000,
         providers: ['HDB', 'URA', 'MALL'],
-        minLots: 1,
+        minLots: 0,
       });
 
       setNearbyCarparks(response.data.carparks);
