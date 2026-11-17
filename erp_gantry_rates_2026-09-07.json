@@ -1,0 +1,2919 @@
+{
+  "meta": {
+    "title": "Base ERP Rate Table - for Passenger Cars, Taxis and Light Goods Vehicles",
+    "source_file": "1PCU_ERP_Rates_Report.pdf",
+    "publisher": "Land Transport Authority (LTA), Singapore",
+    "effective_from": "2026-09-07",
+    "currency": "SGD",
+    "time_period_note": "A period such as 07:30 - 08:00 applies from and including 07:30 until but excluding 08:00.",
+    "empty_cell_note": "The PDF leaves cells blank where no ERP charge applies. Those periods are not listed in 'rates'; treat them as 0.",
+    "rate_note": "'rate_sgd' is the base rate for passenger cars, taxis and light goods vehicles. Multiply by 'vehicle_multipliers' for other vehicle types.",
+    "name_note": "'name' is the road or spot for that one gantry. Where a PDF column name lists several places separated by commas (for example 'CTE northbound between PIE and Braddell Road, PIE to CTE northbound before Braddell Road'), the name is split at the commas and matched to the column's gantry numbers in the order the PDF lists them. Columns without commas keep the whole column name for every gantry in them. Where there are no commas but the column joins places with 'and' (for example 'YMCA Gantry and Fort Canning Tunnel Gantry'), it is split at 'and' the same way. The PDF does not label which gantry is which; the order match was confirmed for gantries 46, 67, 92 and 93 and the same rule is used for the rest.",
+    "gantry_note": "One entry per gantry number. 'location' comes from the PDF's reference tables (Refer #1, #2, #3), which only cover the Orchard Cordon and Rest of CBD gantries. Other gantries have no individual location in the PDF, only the description of the road section they belong to ('charging_point_name').",
+    "period_note": "Back-to-back periods with the same charge are merged into one (for example 11:05 - 11:25, 11:25 - 11:30 and 11:30 - 11:35 at $1.00 become 11:05 - 11:35). Periods with a different charge, and gaps where there is no charge, are kept as they are. A merged period runs from its start up to but excluding its end.",
+    "shared_rate_note": "Gantries that sit in the same PDF column share one set of rates ('shares_rate_with_gantries'). The PDF gives one charge per column, not a separate charge per gantry.",
+    "day_types": {
+      "weekday": "All three sections (Orchard Cordon and Rest of CBD, Arterial Roads, Expressways).",
+      "saturday": "The PDF has Saturday columns for the Orchard Cordon and Rest of CBD section only, and all of them are blank in this edition, so there are no Saturday rates. Arterial roads and expressways have no Saturday columns."
+    }
+  },
+  "vehicle_multipliers": [
+    {
+      "vehicle_type": "Motorcycles",
+      "multiplier": 0.5
+    },
+    {
+      "vehicle_type": "Passenger Cars/Light Goods Vehicles/Taxis",
+      "multiplier": 1.0
+    },
+    {
+      "vehicle_type": "Heavy Goods Vehicles/ Small Buses",
+      "multiplier": 1.5
+    },
+    {
+      "vehicle_type": "Very Heavy Goods Vehicles/ Big Buses",
+      "multiplier": 2.0
+    }
+  ],
+  "gantries": [
+    {
+      "gantry_no": 1,
+      "location": "Victoria Street",
+      "name": "Bugis-Marina Centre",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-01",
+      "charging_point_name": "Bugis-Marina Centre",
+      "shares_rate_with_gantries": [
+        2,
+        9,
+        10,
+        11,
+        16,
+        17,
+        18,
+        23
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 2,
+      "location": "Nicoll Highway",
+      "name": "Bugis-Marina Centre",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-01",
+      "charging_point_name": "Bugis-Marina Centre",
+      "shares_rate_with_gantries": [
+        1,
+        9,
+        10,
+        11,
+        16,
+        17,
+        18,
+        23
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 3,
+      "location": "Eu Tong Sen Street",
+      "name": "Shenton Way-Chinatown",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-02",
+      "charging_point_name": "Shenton Way-Chinatown",
+      "shares_rate_with_gantries": [
+        5,
+        6,
+        7,
+        19,
+        20,
+        24,
+        25,
+        28,
+        29,
+        72
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 4,
+      "location": "Orchard Link",
+      "name": "Orchard",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-03",
+      "charging_point_name": "Orchard",
+      "shares_rate_with_gantries": [
+        12,
+        13,
+        14,
+        15,
+        21,
+        22,
+        26,
+        27
+      ],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "11:00",
+          "end": "11:05",
+          "rate_sgd": 0.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "11:05",
+          "end": "18:55",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "18:55",
+          "end": "19:00",
+          "rate_sgd": 0.5
+        }
+      ]
+    },
+    {
+      "gantry_no": 5,
+      "location": "Lim Teck Kim Road",
+      "name": "Shenton Way-Chinatown",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-02",
+      "charging_point_name": "Shenton Way-Chinatown",
+      "shares_rate_with_gantries": [
+        3,
+        6,
+        7,
+        19,
+        20,
+        24,
+        25,
+        28,
+        29,
+        72
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 6,
+      "location": "Anson Road",
+      "name": "Shenton Way-Chinatown",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-02",
+      "charging_point_name": "Shenton Way-Chinatown",
+      "shares_rate_with_gantries": [
+        3,
+        5,
+        7,
+        19,
+        20,
+        24,
+        25,
+        28,
+        29,
+        72
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 7,
+      "location": "Tanjong Pagar Road",
+      "name": "Shenton Way-Chinatown",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-02",
+      "charging_point_name": "Shenton Way-Chinatown",
+      "shares_rate_with_gantries": [
+        3,
+        5,
+        6,
+        19,
+        20,
+        24,
+        25,
+        28,
+        29,
+        72
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 9,
+      "location": "Bencoolen Street",
+      "name": "Bugis-Marina Centre",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-01",
+      "charging_point_name": "Bugis-Marina Centre",
+      "shares_rate_with_gantries": [
+        1,
+        2,
+        10,
+        11,
+        16,
+        17,
+        18,
+        23
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 10,
+      "location": "Queen Street",
+      "name": "Bugis-Marina Centre",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-01",
+      "charging_point_name": "Bugis-Marina Centre",
+      "shares_rate_with_gantries": [
+        1,
+        2,
+        9,
+        11,
+        16,
+        17,
+        18,
+        23
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 11,
+      "location": "North Bridge Road",
+      "name": "Bugis-Marina Centre",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-01",
+      "charging_point_name": "Bugis-Marina Centre",
+      "shares_rate_with_gantries": [
+        1,
+        2,
+        9,
+        10,
+        16,
+        17,
+        18,
+        23
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 12,
+      "location": "Oxley Road",
+      "name": "Orchard",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-03",
+      "charging_point_name": "Orchard",
+      "shares_rate_with_gantries": [
+        4,
+        13,
+        14,
+        15,
+        21,
+        22,
+        26,
+        27
+      ],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "11:00",
+          "end": "11:05",
+          "rate_sgd": 0.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "11:05",
+          "end": "18:55",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "18:55",
+          "end": "19:00",
+          "rate_sgd": 0.5
+        }
+      ]
+    },
+    {
+      "gantry_no": 13,
+      "location": "Orchard Road",
+      "name": "Orchard",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-03",
+      "charging_point_name": "Orchard",
+      "shares_rate_with_gantries": [
+        4,
+        12,
+        14,
+        15,
+        21,
+        22,
+        26,
+        27
+      ],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "11:00",
+          "end": "11:05",
+          "rate_sgd": 0.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "11:05",
+          "end": "18:55",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "18:55",
+          "end": "19:00",
+          "rate_sgd": 0.5
+        }
+      ]
+    },
+    {
+      "gantry_no": 14,
+      "location": "Orchard Turn",
+      "name": "Orchard",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-03",
+      "charging_point_name": "Orchard",
+      "shares_rate_with_gantries": [
+        4,
+        12,
+        13,
+        15,
+        21,
+        22,
+        26,
+        27
+      ],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "11:00",
+          "end": "11:05",
+          "rate_sgd": 0.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "11:05",
+          "end": "18:55",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "18:55",
+          "end": "19:00",
+          "rate_sgd": 0.5
+        }
+      ]
+    },
+    {
+      "gantry_no": 15,
+      "location": "Killiney Road",
+      "name": "Orchard",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-03",
+      "charging_point_name": "Orchard",
+      "shares_rate_with_gantries": [
+        4,
+        12,
+        13,
+        14,
+        21,
+        22,
+        26,
+        27
+      ],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "11:00",
+          "end": "11:05",
+          "rate_sgd": 0.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "11:05",
+          "end": "18:55",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "18:55",
+          "end": "19:00",
+          "rate_sgd": 0.5
+        }
+      ]
+    },
+    {
+      "gantry_no": 16,
+      "location": "Beach Road",
+      "name": "Bugis-Marina Centre",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-01",
+      "charging_point_name": "Bugis-Marina Centre",
+      "shares_rate_with_gantries": [
+        1,
+        2,
+        9,
+        10,
+        11,
+        17,
+        18,
+        23
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 17,
+      "location": "Temasek Boulevard",
+      "name": "Bugis-Marina Centre",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-01",
+      "charging_point_name": "Bugis-Marina Centre",
+      "shares_rate_with_gantries": [
+        1,
+        2,
+        9,
+        10,
+        11,
+        16,
+        18,
+        23
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 18,
+      "location": "Republic Boulevard",
+      "name": "Bugis-Marina Centre",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-01",
+      "charging_point_name": "Bugis-Marina Centre",
+      "shares_rate_with_gantries": [
+        1,
+        2,
+        9,
+        10,
+        11,
+        16,
+        17,
+        23
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 19,
+      "location": "Havelock Road/Clemenceau Ave",
+      "name": "Shenton Way-Chinatown",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-02",
+      "charging_point_name": "Shenton Way-Chinatown",
+      "shares_rate_with_gantries": [
+        3,
+        5,
+        6,
+        7,
+        20,
+        24,
+        25,
+        28,
+        29,
+        72
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 20,
+      "location": "Havelock Road/CTE Exit",
+      "name": "Shenton Way-Chinatown",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-02",
+      "charging_point_name": "Shenton Way-Chinatown",
+      "shares_rate_with_gantries": [
+        3,
+        5,
+        6,
+        7,
+        19,
+        24,
+        25,
+        28,
+        29,
+        72
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 21,
+      "location": "Buyong Road",
+      "name": "Orchard",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-03",
+      "charging_point_name": "Orchard",
+      "shares_rate_with_gantries": [
+        4,
+        12,
+        13,
+        14,
+        15,
+        22,
+        26,
+        27
+      ],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "11:00",
+          "end": "11:05",
+          "rate_sgd": 0.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "11:05",
+          "end": "18:55",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "18:55",
+          "end": "19:00",
+          "rate_sgd": 0.5
+        }
+      ]
+    },
+    {
+      "gantry_no": 22,
+      "location": "Kramat Road",
+      "name": "Orchard",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-03",
+      "charging_point_name": "Orchard",
+      "shares_rate_with_gantries": [
+        4,
+        12,
+        13,
+        14,
+        15,
+        21,
+        26,
+        27
+      ],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "11:00",
+          "end": "11:05",
+          "rate_sgd": 0.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "11:05",
+          "end": "18:55",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "18:55",
+          "end": "19:00",
+          "rate_sgd": 0.5
+        }
+      ]
+    },
+    {
+      "gantry_no": 23,
+      "location": "River Valley Road",
+      "name": "Bugis-Marina Centre",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-01",
+      "charging_point_name": "Bugis-Marina Centre",
+      "shares_rate_with_gantries": [
+        1,
+        2,
+        9,
+        10,
+        11,
+        16,
+        17,
+        18
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 24,
+      "location": "Merchant Road/Clemenceau Ave",
+      "name": "Shenton Way-Chinatown",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-02",
+      "charging_point_name": "Shenton Way-Chinatown",
+      "shares_rate_with_gantries": [
+        3,
+        5,
+        6,
+        7,
+        19,
+        20,
+        25,
+        28,
+        29,
+        72
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 25,
+      "location": "Merchant Road/CTE Exit",
+      "name": "Shenton Way-Chinatown",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-02",
+      "charging_point_name": "Shenton Way-Chinatown",
+      "shares_rate_with_gantries": [
+        3,
+        5,
+        6,
+        7,
+        19,
+        20,
+        24,
+        28,
+        29,
+        72
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 26,
+      "location": "Clemenceau Ave",
+      "name": "Orchard",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-03",
+      "charging_point_name": "Orchard",
+      "shares_rate_with_gantries": [
+        4,
+        12,
+        13,
+        14,
+        15,
+        21,
+        22,
+        27
+      ],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "11:00",
+          "end": "11:05",
+          "rate_sgd": 0.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "11:05",
+          "end": "18:55",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "18:55",
+          "end": "19:00",
+          "rate_sgd": 0.5
+        }
+      ]
+    },
+    {
+      "gantry_no": 27,
+      "location": "Cairnhill Road",
+      "name": "Orchard",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-03",
+      "charging_point_name": "Orchard",
+      "shares_rate_with_gantries": [
+        4,
+        12,
+        13,
+        14,
+        15,
+        21,
+        22,
+        26
+      ],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "11:00",
+          "end": "11:05",
+          "rate_sgd": 0.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "11:05",
+          "end": "18:55",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "18:55",
+          "end": "19:00",
+          "rate_sgd": 0.5
+        }
+      ]
+    },
+    {
+      "gantry_no": 28,
+      "location": "Central Boulevard",
+      "name": "Shenton Way-Chinatown",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-02",
+      "charging_point_name": "Shenton Way-Chinatown",
+      "shares_rate_with_gantries": [
+        3,
+        5,
+        6,
+        7,
+        19,
+        20,
+        24,
+        25,
+        29,
+        72
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 29,
+      "location": "Slip Road from Westbound MCE towards Maxwell Road",
+      "name": "Shenton Way-Chinatown",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-02",
+      "charging_point_name": "Shenton Way-Chinatown",
+      "shares_rate_with_gantries": [
+        3,
+        5,
+        6,
+        7,
+        19,
+        20,
+        24,
+        25,
+        28,
+        72
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 30,
+      "location": null,
+      "name": "ECP (City)",
+      "name_source": "column name",
+      "location_source": null,
+      "section": "Expressways",
+      "charging_point_id": "EXP-10",
+      "charging_point_name": "ECP (City)",
+      "shares_rate_with_gantries": [],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 31,
+      "location": null,
+      "name": "CTE after Braddell Road",
+      "name_source": "split from column name at commas",
+      "location_source": null,
+      "section": "Expressways",
+      "charging_point_id": "EXP-05",
+      "charging_point_name": "CTE after Braddell Road, Serangoon Road, and Balestier slip road",
+      "shares_rate_with_gantries": [
+        33,
+        34
+      ],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "07:30",
+          "end": "07:35",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:35",
+          "end": "08:00",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:00",
+          "end": "08:05",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:05",
+          "end": "08:30",
+          "rate_sgd": 4.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:30",
+          "end": "08:35",
+          "rate_sgd": 4.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:35",
+          "end": "08:55",
+          "rate_sgd": 5.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:55",
+          "end": "09:00",
+          "rate_sgd": 4.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:00",
+          "end": "09:25",
+          "rate_sgd": 4.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:25",
+          "end": "09:30",
+          "rate_sgd": 3.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:30",
+          "end": "09:55",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:55",
+          "end": "10:00",
+          "rate_sgd": 1.5
+        }
+      ],
+      "latitude": 1.33316,
+      "longitude": 103.86233
+    },
+    {
+      "gantry_no": 32,
+      "location": null,
+      "name": "PIE after Kallang Bahru exit",
+      "name_source": "split from column name at commas",
+      "location_source": null,
+      "section": "Expressways",
+      "charging_point_id": "EXP-16",
+      "charging_point_name": "PIE after Kallang Bahru exit, PIE Slip Road into Bendeemer Rd",
+      "shares_rate_with_gantries": [
+        45
+      ],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "07:00",
+          "end": "07:05",
+          "rate_sgd": 0.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:05",
+          "end": "07:30",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:30",
+          "end": "07:35",
+          "rate_sgd": 1.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:35",
+          "end": "08:30",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:30",
+          "end": "08:35",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:35",
+          "end": "08:55",
+          "rate_sgd": 4.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:55",
+          "end": "09:00",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:00",
+          "end": "09:25",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:25",
+          "end": "09:30",
+          "rate_sgd": 1.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:30",
+          "end": "09:55",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:55",
+          "end": "10:00",
+          "rate_sgd": 0.5
+        }
+      ]
+    },
+    {
+      "gantry_no": 33,
+      "location": null,
+      "name": "Serangoon Road",
+      "name_source": "split from column name at commas",
+      "location_source": null,
+      "section": "Expressways",
+      "charging_point_id": "EXP-05",
+      "charging_point_name": "CTE after Braddell Road, Serangoon Road, and Balestier slip road",
+      "shares_rate_with_gantries": [
+        31,
+        34
+      ],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "07:30",
+          "end": "07:35",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:35",
+          "end": "08:00",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:00",
+          "end": "08:05",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:05",
+          "end": "08:30",
+          "rate_sgd": 4.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:30",
+          "end": "08:35",
+          "rate_sgd": 4.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:35",
+          "end": "08:55",
+          "rate_sgd": 5.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:55",
+          "end": "09:00",
+          "rate_sgd": 4.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:00",
+          "end": "09:25",
+          "rate_sgd": 4.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:25",
+          "end": "09:30",
+          "rate_sgd": 3.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:30",
+          "end": "09:55",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:55",
+          "end": "10:00",
+          "rate_sgd": 1.5
+        }
+      ]
+    },
+    {
+      "gantry_no": 34,
+      "location": null,
+      "name": "Balestier slip road",
+      "name_source": "split from column name at commas",
+      "location_source": null,
+      "section": "Expressways",
+      "charging_point_id": "EXP-05",
+      "charging_point_name": "CTE after Braddell Road, Serangoon Road, and Balestier slip road",
+      "shares_rate_with_gantries": [
+        31,
+        33
+      ],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "07:30",
+          "end": "07:35",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:35",
+          "end": "08:00",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:00",
+          "end": "08:05",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:05",
+          "end": "08:30",
+          "rate_sgd": 4.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:30",
+          "end": "08:35",
+          "rate_sgd": 4.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:35",
+          "end": "08:55",
+          "rate_sgd": 5.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:55",
+          "end": "09:00",
+          "rate_sgd": 4.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:00",
+          "end": "09:25",
+          "rate_sgd": 4.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:25",
+          "end": "09:30",
+          "rate_sgd": 3.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:30",
+          "end": "09:55",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:55",
+          "end": "10:00",
+          "rate_sgd": 1.5
+        }
+      ]
+    },
+    {
+      "gantry_no": 35,
+      "location": null,
+      "name": "CTE between Ang Mo Kio Ave 1 and Braddell Road",
+      "name_source": "column name",
+      "location_source": null,
+      "section": "Expressways",
+      "charging_point_id": "EXP-07",
+      "charging_point_name": "CTE between Ang Mo Kio Ave 1 and Braddell Road",
+      "shares_rate_with_gantries": [],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "07:00",
+          "end": "07:05",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:05",
+          "end": "08:00",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:00",
+          "end": "08:05",
+          "rate_sgd": 2.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:05",
+          "end": "09:25",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:25",
+          "end": "09:30",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:30",
+          "end": "09:55",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:55",
+          "end": "10:00",
+          "rate_sgd": 0.5
+        }
+      ],
+      "latitude": 1.34721,
+      "longitude": 103.8592
+    },
+    {
+      "gantry_no": 36,
+      "location": null,
+      "name": "AYE between Portsdown Road and Alexandra Road",
+      "name_source": "column name",
+      "location_source": null,
+      "section": "Expressways",
+      "charging_point_id": "EXP-01",
+      "charging_point_name": "AYE between Portsdown Road and Alexandra Road",
+      "shares_rate_with_gantries": [],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "08:00",
+          "end": "08:05",
+          "rate_sgd": 0.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:05",
+          "end": "08:30",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:30",
+          "end": "08:35",
+          "rate_sgd": 1.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:35",
+          "end": "08:55",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:55",
+          "end": "09:00",
+          "rate_sgd": 1.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:00",
+          "end": "09:25",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:25",
+          "end": "09:30",
+          "rate_sgd": 0.5
+        }
+      ]
+    },
+    {
+      "gantry_no": 37,
+      "location": null,
+      "name": "PIE eastbound after Adam Road",
+      "name_source": "split from column name at 'and'",
+      "location_source": null,
+      "section": "Expressways",
+      "charging_point_id": "EXP-17",
+      "charging_point_name": "PIE eastbound after Adam Road and Mount Pleasant slip road into the eastbound PIE",
+      "shares_rate_with_gantries": [
+        38
+      ],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "07:30",
+          "end": "07:35",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:35",
+          "end": "08:25",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:25",
+          "end": "08:30",
+          "rate_sgd": 1.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:30",
+          "end": "09:25",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:25",
+          "end": "09:30",
+          "rate_sgd": 0.5
+        }
+      ]
+    },
+    {
+      "gantry_no": 38,
+      "location": null,
+      "name": "Mount Pleasant slip road into the eastbound PIE",
+      "name_source": "split from column name at 'and'",
+      "location_source": null,
+      "section": "Expressways",
+      "charging_point_id": "EXP-17",
+      "charging_point_name": "PIE eastbound after Adam Road and Mount Pleasant slip road into the eastbound PIE",
+      "shares_rate_with_gantries": [
+        37
+      ],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "07:30",
+          "end": "07:35",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:35",
+          "end": "08:25",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:25",
+          "end": "08:30",
+          "rate_sgd": 1.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:30",
+          "end": "09:25",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:25",
+          "end": "09:30",
+          "rate_sgd": 0.5
+        }
+      ]
+    },
+    {
+      "gantry_no": 39,
+      "location": null,
+      "name": "Thomson Road southbound after Toa Payoh Rise",
+      "name_source": "column name",
+      "location_source": null,
+      "section": "Arterial Roads",
+      "charging_point_id": "ART-07",
+      "charging_point_name": "Thomson Road southbound after Toa Payoh Rise",
+      "shares_rate_with_gantries": [],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 40,
+      "location": null,
+      "name": "Bendemeer Road Southbound after Woodsville Interchange",
+      "name_source": "split from column name at commas",
+      "location_source": null,
+      "section": "Arterial Roads",
+      "charging_point_id": "ART-06",
+      "charging_point_name": "Bendemeer Road Southbound after Woodsville Interchange, Woodsville Tunnel",
+      "shares_rate_with_gantries": [
+        71
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 41,
+      "location": null,
+      "name": "Tuasbound AYE - After North Buona Vista",
+      "name_source": "column name",
+      "location_source": null,
+      "section": "Expressways",
+      "charging_point_id": "EXP-03",
+      "charging_point_name": "Tuasbound AYE - After North Buona Vista",
+      "shares_rate_with_gantries": [],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "17:00",
+          "end": "17:05",
+          "rate_sgd": 0.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "17:05",
+          "end": "17:30",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "17:30",
+          "end": "17:35",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "17:35",
+          "end": "17:55",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "17:55",
+          "end": "18:00",
+          "rate_sgd": 2.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "18:00",
+          "end": "18:30",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "18:30",
+          "end": "18:35",
+          "rate_sgd": 2.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "18:35",
+          "end": "18:55",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "18:55",
+          "end": "19:00",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "19:00",
+          "end": "19:25",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "19:25",
+          "end": "19:30",
+          "rate_sgd": 0.5
+        }
+      ],
+      "latitude": 1.30139,
+      "longitude": 103.77611
+    },
+    {
+      "gantry_no": 42,
+      "location": null,
+      "name": "PIE slip road into CTE",
+      "name_source": "column name",
+      "location_source": null,
+      "section": "Expressways",
+      "charging_point_id": "EXP-18",
+      "charging_point_name": "PIE slip road into CTE",
+      "shares_rate_with_gantries": [],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "07:30",
+          "end": "07:35",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:35",
+          "end": "08:00",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:00",
+          "end": "08:05",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:05",
+          "end": "08:30",
+          "rate_sgd": 4.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:30",
+          "end": "08:35",
+          "rate_sgd": 4.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:35",
+          "end": "08:55",
+          "rate_sgd": 5.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:55",
+          "end": "09:00",
+          "rate_sgd": 4.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:00",
+          "end": "09:25",
+          "rate_sgd": 4.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:25",
+          "end": "09:30",
+          "rate_sgd": 3.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:30",
+          "end": "09:55",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:55",
+          "end": "10:00",
+          "rate_sgd": 1.5
+        }
+      ]
+    },
+    {
+      "gantry_no": 43,
+      "location": null,
+      "name": "Dunearn Road eastbound after Dunkirk Avenue",
+      "name_source": "column name",
+      "location_source": null,
+      "section": "Arterial Roads",
+      "charging_point_id": "ART-02",
+      "charging_point_name": "Dunearn Road eastbound after Dunkirk Avenue",
+      "shares_rate_with_gantries": [
+        44
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 44,
+      "location": null,
+      "name": "Dunearn Road eastbound after Dunkirk Avenue",
+      "name_source": "column name",
+      "location_source": null,
+      "section": "Arterial Roads",
+      "charging_point_id": "ART-02",
+      "charging_point_name": "Dunearn Road eastbound after Dunkirk Avenue",
+      "shares_rate_with_gantries": [
+        43
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 45,
+      "location": null,
+      "name": "PIE Slip Road into Bendeemer Rd",
+      "name_source": "split from column name at commas",
+      "location_source": null,
+      "section": "Expressways",
+      "charging_point_id": "EXP-16",
+      "charging_point_name": "PIE after Kallang Bahru exit, PIE Slip Road into Bendeemer Rd",
+      "shares_rate_with_gantries": [
+        32
+      ],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "07:00",
+          "end": "07:05",
+          "rate_sgd": 0.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:05",
+          "end": "07:30",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:30",
+          "end": "07:35",
+          "rate_sgd": 1.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:35",
+          "end": "08:30",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:30",
+          "end": "08:35",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:35",
+          "end": "08:55",
+          "rate_sgd": 4.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:55",
+          "end": "09:00",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:00",
+          "end": "09:25",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:25",
+          "end": "09:30",
+          "rate_sgd": 1.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:30",
+          "end": "09:55",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:55",
+          "end": "10:00",
+          "rate_sgd": 0.5
+        }
+      ]
+    },
+    {
+      "gantry_no": 46,
+      "location": null,
+      "name": "CTE northbound between PIE and Braddell Road",
+      "name_source": "split from column name at commas",
+      "location_source": null,
+      "section": "Expressways",
+      "charging_point_id": "EXP-08",
+      "charging_point_name": "CTE northbound between PIE and Braddell Road, PIE to CTE northbound before Braddell Road",
+      "shares_rate_with_gantries": [
+        67
+      ],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "17:30",
+          "end": "17:35",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "17:35",
+          "end": "18:55",
+          "rate_sgd": 4.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "18:55",
+          "end": "19:00",
+          "rate_sgd": 3.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "19:00",
+          "end": "19:25",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "19:25",
+          "end": "19:30",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "19:30",
+          "end": "19:55",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "19:55",
+          "end": "20:00",
+          "rate_sgd": 0.5
+        }
+      ],
+      "latitude": 1.33257,
+      "longitude": 103.86225
+    },
+    {
+      "gantry_no": 47,
+      "location": null,
+      "name": "YMCA Gantry",
+      "name_source": "split from column name at 'and'",
+      "location_source": null,
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-04",
+      "charging_point_name": "YMCA Gantry and Fort Canning Tunnel Gantry",
+      "shares_rate_with_gantries": [
+        49
+      ],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "11:00",
+          "end": "11:05",
+          "rate_sgd": 0.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "11:05",
+          "end": "18:55",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "18:55",
+          "end": "19:00",
+          "rate_sgd": 0.5
+        }
+      ]
+    },
+    {
+      "gantry_no": 48,
+      "location": null,
+      "name": "Handy Road Gantry",
+      "name_source": "column name",
+      "location_source": null,
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-05",
+      "charging_point_name": "Handy Road Gantry",
+      "shares_rate_with_gantries": [],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 49,
+      "location": null,
+      "name": "Fort Canning Tunnel Gantry",
+      "name_source": "split from column name at 'and'",
+      "location_source": null,
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-04",
+      "charging_point_name": "YMCA Gantry and Fort Canning Tunnel Gantry",
+      "shares_rate_with_gantries": [
+        47
+      ],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "11:00",
+          "end": "11:05",
+          "rate_sgd": 0.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "11:05",
+          "end": "18:55",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "18:55",
+          "end": "19:00",
+          "rate_sgd": 0.5
+        }
+      ]
+    },
+    {
+      "gantry_no": 50,
+      "location": null,
+      "name": "KPE southbound after Defu Flyover",
+      "name_source": "column name",
+      "location_source": null,
+      "section": "Expressways",
+      "charging_point_id": "EXP-13",
+      "charging_point_name": "KPE southbound after Defu Flyover",
+      "shares_rate_with_gantries": [],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "07:00",
+          "end": "07:05",
+          "rate_sgd": 0.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:05",
+          "end": "07:30",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:30",
+          "end": "07:35",
+          "rate_sgd": 2.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:35",
+          "end": "08:00",
+          "rate_sgd": 4.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:00",
+          "end": "08:05",
+          "rate_sgd": 4.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:05",
+          "end": "08:30",
+          "rate_sgd": 5.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:30",
+          "end": "08:35",
+          "rate_sgd": 5.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:35",
+          "end": "08:55",
+          "rate_sgd": 6.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:55",
+          "end": "09:00",
+          "rate_sgd": 4.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:00",
+          "end": "09:25",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:25",
+          "end": "09:30",
+          "rate_sgd": 1.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:30",
+          "end": "09:55",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:55",
+          "end": "10:00",
+          "rate_sgd": 0.5
+        }
+      ],
+      "latitude": 1.35941,
+      "longitude": 103.90323
+    },
+    {
+      "gantry_no": 51,
+      "location": null,
+      "name": "CTE northbound between Jalan Bahagia and PIE",
+      "name_source": "column name",
+      "location_source": null,
+      "section": "Expressways",
+      "charging_point_id": "EXP-09",
+      "charging_point_name": "CTE northbound between Jalan Bahagia and PIE",
+      "shares_rate_with_gantries": [],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "17:30",
+          "end": "17:35",
+          "rate_sgd": 0.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "17:35",
+          "end": "18:55",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "18:55",
+          "end": "19:00",
+          "rate_sgd": 0.5
+        }
+      ],
+      "latitude": 1.32578,
+      "longitude": 103.86024
+    },
+    {
+      "gantry_no": 52,
+      "location": null,
+      "name": "Citybound AYE Set of 3 gantries - After Jurong Town Hall",
+      "name_source": "split from column name at commas",
+      "location_source": null,
+      "section": "Expressways",
+      "charging_point_id": "EXP-02",
+      "charging_point_name": "Citybound AYE Set of 3 gantries - After Jurong Town Hall, Clementi Avenue 6 into AYE, Clementi Avenue 2 into AYE",
+      "shares_rate_with_gantries": [
+        53,
+        74
+      ],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "07:00",
+          "end": "07:05",
+          "rate_sgd": 0.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:05",
+          "end": "07:30",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:30",
+          "end": "07:35",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:35",
+          "end": "07:55",
+          "rate_sgd": 5.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:55",
+          "end": "08:00",
+          "rate_sgd": 3.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:00",
+          "end": "08:30",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:30",
+          "end": "08:35",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:35",
+          "end": "08:55",
+          "rate_sgd": 4.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:55",
+          "end": "09:00",
+          "rate_sgd": 3.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:00",
+          "end": "09:25",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:25",
+          "end": "09:30",
+          "rate_sgd": 2.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:30",
+          "end": "09:55",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:55",
+          "end": "10:00",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "17:30",
+          "end": "17:35",
+          "rate_sgd": 1.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "17:35",
+          "end": "17:55",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "17:55",
+          "end": "18:00",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "18:00",
+          "end": "18:25",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "18:25",
+          "end": "18:30",
+          "rate_sgd": 0.5
+        }
+      ],
+      "latitude": 1.31484,
+      "longitude": 103.76082
+    },
+    {
+      "gantry_no": 53,
+      "location": null,
+      "name": "Clementi Avenue 6 into AYE",
+      "name_source": "split from column name at commas",
+      "location_source": null,
+      "section": "Expressways",
+      "charging_point_id": "EXP-02",
+      "charging_point_name": "Citybound AYE Set of 3 gantries - After Jurong Town Hall, Clementi Avenue 6 into AYE, Clementi Avenue 2 into AYE",
+      "shares_rate_with_gantries": [
+        52,
+        74
+      ],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "07:00",
+          "end": "07:05",
+          "rate_sgd": 0.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:05",
+          "end": "07:30",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:30",
+          "end": "07:35",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:35",
+          "end": "07:55",
+          "rate_sgd": 5.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:55",
+          "end": "08:00",
+          "rate_sgd": 3.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:00",
+          "end": "08:30",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:30",
+          "end": "08:35",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:35",
+          "end": "08:55",
+          "rate_sgd": 4.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:55",
+          "end": "09:00",
+          "rate_sgd": 3.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:00",
+          "end": "09:25",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:25",
+          "end": "09:30",
+          "rate_sgd": 2.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:30",
+          "end": "09:55",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:55",
+          "end": "10:00",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "17:30",
+          "end": "17:35",
+          "rate_sgd": 1.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "17:35",
+          "end": "17:55",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "17:55",
+          "end": "18:00",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "18:00",
+          "end": "18:25",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "18:25",
+          "end": "18:30",
+          "rate_sgd": 0.5
+        }
+      ],
+      "latitude": 1.30875,
+      "longitude": 103.76637
+    },
+    {
+      "gantry_no": 54,
+      "location": null,
+      "name": "BKE between Dairy Farm Road and PIE",
+      "name_source": "column name",
+      "location_source": null,
+      "section": "Expressways",
+      "charging_point_id": "EXP-04",
+      "charging_point_name": "BKE between Dairy Farm Road and PIE",
+      "shares_rate_with_gantries": [],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 55,
+      "location": null,
+      "name": "Upper Bt Timah Road southbound after Hume Ave",
+      "name_source": "column name",
+      "location_source": null,
+      "section": "Arterial Roads",
+      "charging_point_id": "ART-09",
+      "charging_point_name": "Upper Bt Timah Road southbound after Hume Ave",
+      "shares_rate_with_gantries": [],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 56,
+      "location": null,
+      "name": "Lorong 6 Toa Payoh from Braddell Road",
+      "name_source": "column name",
+      "location_source": null,
+      "section": "Arterial Roads",
+      "charging_point_id": "ART-08",
+      "charging_point_name": "Lorong 6 Toa Payoh from Braddell Road",
+      "shares_rate_with_gantries": [],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 57,
+      "location": null,
+      "name": "Kallang Bahru from PIE",
+      "name_source": "column name",
+      "location_source": null,
+      "section": "Arterial Roads",
+      "charging_point_id": "ART-05",
+      "charging_point_name": "Kallang Bahru from PIE",
+      "shares_rate_with_gantries": [],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 58,
+      "location": null,
+      "name": "Geylang Bahru westbound after Geylang Bahru Terrace",
+      "name_source": "column name",
+      "location_source": null,
+      "section": "Arterial Roads",
+      "charging_point_id": "ART-03",
+      "charging_point_name": "Geylang Bahru westbound after Geylang Bahru Terrace",
+      "shares_rate_with_gantries": [],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 59,
+      "location": null,
+      "name": "Upper Boon Keng Road near Lorong 1 Geylang",
+      "name_source": "column name",
+      "location_source": null,
+      "section": "Arterial Roads",
+      "charging_point_id": "ART-01",
+      "charging_point_name": "Upper Boon Keng Road near Lorong 1 Geylang",
+      "shares_rate_with_gantries": [],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 60,
+      "location": null,
+      "name": "Eu Tong Sen St at Central",
+      "name_source": "split from column name at commas",
+      "location_source": null,
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-07",
+      "charging_point_name": "Eu Tong Sen St at Central, Northbound Fullerton Road, and Northbound Bayfront Ave Gantries",
+      "shares_rate_with_gantries": [
+        63,
+        66
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 61,
+      "location": null,
+      "name": "New Bridge Road",
+      "name_source": "split from column name at commas",
+      "location_source": null,
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-06",
+      "charging_point_name": "New Bridge Road, South Bridge Road, Southbound Fullerton Road, and Southbound Bayfront Ave Gantries",
+      "shares_rate_with_gantries": [
+        62,
+        64,
+        69
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 62,
+      "location": null,
+      "name": "South Bridge Road",
+      "name_source": "split from column name at commas",
+      "location_source": null,
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-06",
+      "charging_point_name": "New Bridge Road, South Bridge Road, Southbound Fullerton Road, and Southbound Bayfront Ave Gantries",
+      "shares_rate_with_gantries": [
+        61,
+        64,
+        69
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 63,
+      "location": null,
+      "name": "Northbound Fullerton Road",
+      "name_source": "split from column name at commas",
+      "location_source": null,
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-07",
+      "charging_point_name": "Eu Tong Sen St at Central, Northbound Fullerton Road, and Northbound Bayfront Ave Gantries",
+      "shares_rate_with_gantries": [
+        60,
+        66
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 64,
+      "location": null,
+      "name": "Southbound Fullerton Road",
+      "name_source": "split from column name at commas",
+      "location_source": null,
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-06",
+      "charging_point_name": "New Bridge Road, South Bridge Road, Southbound Fullerton Road, and Southbound Bayfront Ave Gantries",
+      "shares_rate_with_gantries": [
+        61,
+        62,
+        69
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 65,
+      "location": null,
+      "name": "PIE westbound before Eunos Link",
+      "name_source": "column name",
+      "location_source": null,
+      "section": "Expressways",
+      "charging_point_id": "EXP-19",
+      "charging_point_name": "PIE westbound before Eunos Link",
+      "shares_rate_with_gantries": [],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "07:30",
+          "end": "07:35",
+          "rate_sgd": 0.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:35",
+          "end": "08:30",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:30",
+          "end": "08:35",
+          "rate_sgd": 1.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:35",
+          "end": "08:55",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:55",
+          "end": "09:00",
+          "rate_sgd": 1.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:00",
+          "end": "09:25",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:25",
+          "end": "09:30",
+          "rate_sgd": 0.5
+        }
+      ]
+    },
+    {
+      "gantry_no": 66,
+      "location": null,
+      "name": "Northbound Bayfront Ave Gantries",
+      "name_source": "split from column name at commas",
+      "location_source": null,
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-07",
+      "charging_point_name": "Eu Tong Sen St at Central, Northbound Fullerton Road, and Northbound Bayfront Ave Gantries",
+      "shares_rate_with_gantries": [
+        60,
+        63
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 67,
+      "location": null,
+      "name": "PIE to CTE northbound before Braddell Road",
+      "name_source": "split from column name at commas",
+      "location_source": null,
+      "section": "Expressways",
+      "charging_point_id": "EXP-08",
+      "charging_point_name": "CTE northbound between PIE and Braddell Road, PIE to CTE northbound before Braddell Road",
+      "shares_rate_with_gantries": [
+        46
+      ],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "17:30",
+          "end": "17:35",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "17:35",
+          "end": "18:55",
+          "rate_sgd": 4.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "18:55",
+          "end": "19:00",
+          "rate_sgd": 3.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "19:00",
+          "end": "19:25",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "19:25",
+          "end": "19:30",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "19:30",
+          "end": "19:55",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "19:55",
+          "end": "20:00",
+          "rate_sgd": 0.5
+        }
+      ],
+      "latitude": 1.33322,
+      "longitude": 103.86187
+    },
+    {
+      "gantry_no": 68,
+      "location": null,
+      "name": "CTE slip road to PIE (Changi) / Serangoon Road",
+      "name_source": "column name",
+      "location_source": null,
+      "section": "Expressways",
+      "charging_point_id": "EXP-06",
+      "charging_point_name": "CTE slip road to PIE (Changi) / Serangoon Road",
+      "shares_rate_with_gantries": [],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "07:30",
+          "end": "07:35",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:35",
+          "end": "08:00",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:00",
+          "end": "08:05",
+          "rate_sgd": 2.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:05",
+          "end": "08:30",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:30",
+          "end": "08:35",
+          "rate_sgd": 4.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:35",
+          "end": "08:55",
+          "rate_sgd": 5.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:55",
+          "end": "09:00",
+          "rate_sgd": 4.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:00",
+          "end": "09:25",
+          "rate_sgd": 4.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:25",
+          "end": "09:30",
+          "rate_sgd": 3.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:30",
+          "end": "09:55",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:55",
+          "end": "10:00",
+          "rate_sgd": 1.5
+        }
+      ],
+      "latitude": 1.3331,
+      "longitude": 103.86264
+    },
+    {
+      "gantry_no": 69,
+      "location": null,
+      "name": "Southbound Bayfront Ave Gantries",
+      "name_source": "split from column name at commas",
+      "location_source": null,
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-06",
+      "charging_point_name": "New Bridge Road, South Bridge Road, Southbound Fullerton Road, and Southbound Bayfront Ave Gantries",
+      "shares_rate_with_gantries": [
+        61,
+        62,
+        64
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 70,
+      "location": null,
+      "name": "Geylang Road westbound before Kallang River",
+      "name_source": "column name",
+      "location_source": null,
+      "section": "Arterial Roads",
+      "charging_point_id": "ART-04",
+      "charging_point_name": "Geylang Road westbound before Kallang River",
+      "shares_rate_with_gantries": [],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 71,
+      "location": null,
+      "name": "Woodsville Tunnel",
+      "name_source": "split from column name at commas",
+      "location_source": null,
+      "section": "Arterial Roads",
+      "charging_point_id": "ART-06",
+      "charging_point_name": "Bendemeer Road Southbound after Woodsville Interchange, Woodsville Tunnel",
+      "shares_rate_with_gantries": [
+        40
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 72,
+      "location": "Sheares Avenue towards Sheares Link",
+      "name": "Shenton Way-Chinatown",
+      "name_source": "column name",
+      "location_source": "reference table",
+      "section": "Orchard Cordon and Rest of CBD",
+      "charging_point_id": "CBD-02",
+      "charging_point_name": "Shenton Way-Chinatown",
+      "shares_rate_with_gantries": [
+        3,
+        5,
+        6,
+        7,
+        19,
+        20,
+        24,
+        25,
+        28,
+        29
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 73,
+      "location": null,
+      "name": "ECP Eastbound before KPE",
+      "name_source": "column name",
+      "location_source": null,
+      "section": "Expressways",
+      "charging_point_id": "EXP-11",
+      "charging_point_name": "ECP Eastbound before KPE",
+      "shares_rate_with_gantries": [],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 74,
+      "location": null,
+      "name": "Clementi Avenue 2 into AYE",
+      "name_source": "split from column name at commas",
+      "location_source": null,
+      "section": "Expressways",
+      "charging_point_id": "EXP-02",
+      "charging_point_name": "Citybound AYE Set of 3 gantries - After Jurong Town Hall, Clementi Avenue 6 into AYE, Clementi Avenue 2 into AYE",
+      "shares_rate_with_gantries": [
+        52,
+        53
+      ],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "07:00",
+          "end": "07:05",
+          "rate_sgd": 0.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:05",
+          "end": "07:30",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:30",
+          "end": "07:35",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:35",
+          "end": "07:55",
+          "rate_sgd": 5.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "07:55",
+          "end": "08:00",
+          "rate_sgd": 3.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:00",
+          "end": "08:30",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:30",
+          "end": "08:35",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:35",
+          "end": "08:55",
+          "rate_sgd": 4.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "08:55",
+          "end": "09:00",
+          "rate_sgd": 3.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:00",
+          "end": "09:25",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:25",
+          "end": "09:30",
+          "rate_sgd": 2.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:30",
+          "end": "09:55",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "09:55",
+          "end": "10:00",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "17:30",
+          "end": "17:35",
+          "rate_sgd": 1.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "17:35",
+          "end": "17:55",
+          "rate_sgd": 3.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "17:55",
+          "end": "18:00",
+          "rate_sgd": 2.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "18:00",
+          "end": "18:25",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "18:25",
+          "end": "18:30",
+          "rate_sgd": 0.5
+        }
+      ],
+      "latitude": 1.31634,
+      "longitude": 103.75869
+    },
+    {
+      "gantry_no": 80,
+      "location": null,
+      "name": "KPE slip road into citybound ECP",
+      "name_source": "column name",
+      "location_source": null,
+      "section": "Expressways",
+      "charging_point_id": "EXP-12",
+      "charging_point_name": "KPE slip road into citybound ECP",
+      "shares_rate_with_gantries": [],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 90,
+      "location": null,
+      "name": "MCE Westbound before exit to Central Boulevard",
+      "name_source": "split from column name at 'and'",
+      "location_source": null,
+      "section": "Expressways",
+      "charging_point_id": "EXP-14",
+      "charging_point_name": "MCE Westbound before exit to Central Boulevard and before exit to Maxwell Rd",
+      "shares_rate_with_gantries": [
+        91
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 91,
+      "location": null,
+      "name": "before exit to Maxwell Rd",
+      "name_source": "split from column name at 'and'",
+      "location_source": null,
+      "section": "Expressways",
+      "charging_point_id": "EXP-14",
+      "charging_point_name": "MCE Westbound before exit to Central Boulevard and before exit to Maxwell Rd",
+      "shares_rate_with_gantries": [
+        90
+      ],
+      "has_charges_in_this_edition": false,
+      "rates": []
+    },
+    {
+      "gantry_no": 92,
+      "location": null,
+      "name": "MCE eastbound after entry from Maxwell Road",
+      "name_source": "split from column name at commas",
+      "location_source": null,
+      "section": "Expressways",
+      "charging_point_id": "EXP-15",
+      "charging_point_name": "MCE eastbound after entry from Maxwell Road, on slip road after Marina Boulevard",
+      "shares_rate_with_gantries": [
+        93
+      ],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "18:30",
+          "end": "18:35",
+          "rate_sgd": 0.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "18:35",
+          "end": "18:55",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "18:55",
+          "end": "19:00",
+          "rate_sgd": 0.5
+        }
+      ]
+    },
+    {
+      "gantry_no": 93,
+      "location": null,
+      "name": "on slip road after Marina Boulevard",
+      "name_source": "split from column name at commas",
+      "location_source": null,
+      "section": "Expressways",
+      "charging_point_id": "EXP-15",
+      "charging_point_name": "MCE eastbound after entry from Maxwell Road, on slip road after Marina Boulevard",
+      "shares_rate_with_gantries": [
+        92
+      ],
+      "has_charges_in_this_edition": true,
+      "rates": [
+        {
+          "day_type": "weekday",
+          "start": "18:30",
+          "end": "18:35",
+          "rate_sgd": 0.5
+        },
+        {
+          "day_type": "weekday",
+          "start": "18:35",
+          "end": "18:55",
+          "rate_sgd": 1.0
+        },
+        {
+          "day_type": "weekday",
+          "start": "18:55",
+          "end": "19:00",
+          "rate_sgd": 0.5
+        }
+      ]
+    }
+  ]
+}
