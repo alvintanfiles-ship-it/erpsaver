@@ -8,6 +8,7 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 -- Enum types
 CREATE TYPE carpark_provider AS ENUM ('HDB', 'URA', 'MALL');
+ALTER TYPE carpark_provider ADD VALUE IF NOT EXISTS 'LTA';
 CREATE TYPE erp_gantry_type AS ENUM ('GANTRY', 'CORDON');
 CREATE TYPE parking_status AS ENUM ('AVAILABLE', 'FILLING_UP', 'CRITICAL', 'UNKNOWN');
 
@@ -364,10 +365,10 @@ BEGIN
         v_dep_time := v_sg_time::TIME;
         
         -- Get gantry code and name
-        SELECT eg.gantry_code, eg.name
-        INTO v_gantry_code, v_gantry_name
-        FROM erp_gantries eg
-        WHERE eg.id = v_gantry_id AND eg.is_active = true;
+                SELECT eg.gantry_code, eg.name
+                INTO v_gantry_code, v_gantry_name
+                FROM erp_gantries eg
+                WHERE eg.id = v_gantry_id AND eg.is_active = true;
         
         IF NOT FOUND THEN
             CONTINUE;
