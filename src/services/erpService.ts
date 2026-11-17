@@ -475,7 +475,7 @@ class ERPService {
       let result;
       // Use 2-arg version (departure time for all gantries) - simpler and reliable
       result = await db.query(
-        `SELECT * FROM calculate_erp_cost($1, $2)`,
+        `SELECT * FROM calculate_erp_cost($1::uuid[], $2::timestamptz)`,
         [gantryIds, departureTime]
       );
 
