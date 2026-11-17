@@ -201,22 +201,86 @@ async function seedSampleERP(): Promise<void> {
   // Clear existing ERP data to ensure clean authoritative state
   await db.query('TRUNCATE TABLE erp_rate_tiers, erp_gantries RESTART IDENTITY CASCADE');
 
-  // Fallback for gantries which lack coords in JSON (from shapefile lookup)
-  const FALLBACK_COORDS: Record<number, {lat: number, lng: number}> = {
-    25: { lat: 1.315, lng: 103.855 },      // CTE near Braddell/Merchant Road exit
-    33: { lat: 1.328, lng: 103.852 },      // CTE after Braddell Road
-    34: { lat: 1.328, lng: 103.852 },      // CTE after Braddell Road (duplicate)
-    36: { lat: 1.286834, lng: 103.796853 },
-    35: { lat: 1.34721, lng: 103.8592 },
-    37: { lat: 1.345, lng: 103.845 },
-    38: { lat: 1.345, lng: 103.845 },
-    41: { lat: 1.30139, lng: 103.77611 },
-    42: { lat: 1.32899, lng: 103.86475 },
-    50: { lat: 1.35941, lng: 103.90323 },
-    51: { lat: 1.32578, lng: 103.86024 },
-    52: { lat: 1.31484, lng: 103.76082 },
-    53: { lat: 1.30875, lng: 103.76637 },
-    74: { lat: 1.31634, lng: 103.75869 },
+  // Coordinates for all gantries from seed_erp.sql (authoritative source)
+  const GANTRY_COORDS: Record<number, {lat: number, lng: number}> = {
+    1: { lat: 1.300404, lng: 103.855752 },
+    2: { lat: 1.299633, lng: 103.861945 },
+    3: { lat: 1.280421, lng: 103.840066 },
+    4: { lat: 1.32041, lng: 103.968794 },
+    5: { lat: 1.405011, lng: 103.855084 },
+    6: { lat: 1.273307, lng: 103.844415 },
+    7: { lat: 1.273002, lng: 103.843099 },
+    9: { lat: 1.340191, lng: 103.972154 },
+    10: { lat: 1.301291, lng: 103.854948 },
+    11: { lat: 1.299621, lng: 103.856457 },
+    12: { lat: 1.299254, lng: 103.841383 },
+    13: { lat: 1.304795, lng: 103.83224 },
+    14: { lat: 1.303526, lng: 103.83264 },
+    15: { lat: 1.299514, lng: 103.839831 },
+    16: { lat: 1.297949, lng: 103.857692 },
+    17: { lat: 1.295998, lng: 103.859687 },
+    18: { lat: 1.296217, lng: 103.862406 },
+    19: { lat: 1.400498, lng: 103.861717 },
+    20: { lat: 1.287802, lng: 103.842721 },
+    21: { lat: 1.300568, lng: 103.843194 },
+    22: { lat: 1.301622, lng: 103.841987 },
+    23: { lat: 1.293, lng: 103.848 },
+    24: { lat: 1.290048, lng: 103.842397 },
+    25: { lat: 1.288699, lng: 103.844417 },
+    26: { lat: 1.297703, lng: 103.843711 },
+    27: { lat: 1.305698, lng: 103.837647 },
+    28: { lat: 1.27442, lng: 103.860562 },
+    29: { lat: 1.274645, lng: 103.850071 },
+    30: { lat: 1.286, lng: 103.797 },
+    31: { lat: 1.326, lng: 103.949 },
+    32: { lat: 1.326321, lng: 103.870506 },
+    33: { lat: 1.329084, lng: 103.864612 },
+    34: { lat: 1.318356, lng: 103.851642 },
+    35: { lat: 1.327, lng: 103.95 },
+    36: { lat: 1.286743, lng: 103.796802 },
+    37: { lat: 1.324506, lng: 103.859231 },
+    38: { lat: 1.327605, lng: 103.828317 },
+    39: { lat: 1.336294, lng: 103.837206 },
+    40: { lat: 1.327247, lng: 103.868467 },
+    41: { lat: 1.329679, lng: 103.952615 },
+    42: { lat: 1.329006, lng: 103.864616 },
+    43: { lat: 1.321577, lng: 103.823636 },
+    44: { lat: 1.348894, lng: 103.963549 },
+    45: { lat: 1.326222, lng: 103.870406 },
+    46: { lat: 1.33978, lng: 103.950792 },
+    47: { lat: 1.298025, lng: 103.847993 },
+    48: { lat: 1.298737, lng: 103.848065 },
+    49: { lat: 1.297733, lng: 103.846393 },
+    50: { lat: 1.336646, lng: 103.94115 },
+    51: { lat: 1.336299, lng: 103.940574 },
+    52: { lat: 1.335209, lng: 103.9332 },
+    53: { lat: 1.371288, lng: 103.94725 },
+    54: { lat: 1.367336, lng: 103.946182 },
+    55: { lat: 1.366963, lng: 103.947098 },
+    56: { lat: 1.340921, lng: 103.853412 },
+    57: { lat: 1.321941, lng: 103.872836 },
+    58: { lat: 1.320148, lng: 103.871763 },
+    59: { lat: 1.313665, lng: 103.870612 },
+    60: { lat: 1.28939, lng: 103.847598 },
+    61: { lat: 1.361885, lng: 103.944557 },
+    62: { lat: 1.361324, lng: 103.962564 },
+    63: { lat: 1.36064, lng: 103.960803 },
+    64: { lat: 1.360404, lng: 103.961021 },
+    65: { lat: 1.328564, lng: 103.911632 },
+    66: { lat: 1.357562, lng: 103.962743 },
+    67: { lat: 1.337, lng: 103.837 },
+    68: { lat: 1.327, lng: 103.837 },
+    69: { lat: 1.28543, lng: 103.860884 },
+    70: { lat: 1.274, lng: 103.867 },
+    71: { lat: 1.379181, lng: 103.933976 },
+    72: { lat: 1.287, lng: 103.861 },
+    73: { lat: 1.328, lng: 103.94 },
+    74: { lat: 1.37517, lng: 103.91287 },
+    80: { lat: 1.327658, lng: 103.967344 },
+    90: { lat: 1.274991, lng: 103.867034 },
+    91: { lat: 1.270654, lng: 103.856657 },
+    92: { lat: 1.32898, lng: 103.912604 },
+    93: { lat: 1.271052, lng: 103.856496 },
   };
 
   // Helper: compute tripwire as perpendicular LineString (~30m wide)
@@ -290,7 +354,7 @@ async function seedSampleERP(): Promise<void> {
     let lat = g.latitude;
     let lng = g.longitude;
     if (lat == null || lng == null) {
-      const fallback = FALLBACK_COORDS[g.gantry_no];
+      const fallback = GANTRY_COORDS[g.gantry_no];
       if (fallback) {
         lat = fallback.lat;
         lng = fallback.lng;
