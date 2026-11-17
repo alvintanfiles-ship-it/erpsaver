@@ -7,20 +7,34 @@ export async function seed(): Promise<void> {
   logger.info('Seeding database...');
 
   try {
-    // Check if ERP data already exists
+    // Check if ERP data already exists and has meaningful data
     const erpCount = await db.query('SELECT COUNT(*) FROM erp_gantries WHERE is_active = true');
-    if (parseInt(erpCount.rows[0].count) > 0) {
-      logger.info('ERP data already seeded, skipping ERP...');
-    } else {
-      // Seed ERP gantries from seed JSON file (always run this, independent of LTA credentials)
+    const hasMeaningfulERP = parseInt(erpCount.rows[0].count) > 0;
+
+    // Always seed ERP from JSON if files exist (authoritative source)
+    const fs = await import('fs');
+    const path = await import('path');
+    const fileURLToPath = (await import('url')).fileURLToPath;
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+    const projectRoot = path.join(__dirname, '../..');
+    const jsonPath = path.join(projectRoot, 'erp_gantry_rates_2026-09-07.json');
+    const hasJSONFiles = fs.existsSync(jsonPath);
+
+    if (hasJSONFiles) {
+      logger.info('Authoritative ERP JSON found, seeding ERP gantries...');
       await seedSampleERP();
+    } else if (!hasMeaningfulERP) {
+      logger.info('No ERP data and no JSON files, skipping ERP...');
+    } else {
+      logger.info('ERP data already seeded, skipping ERP...');
     }
 
     // Check if carpark data already exists
     const carparkCount = await db.query('SELECT COUNT(*) FROM carparks');
-    if (parseInt(carparkCount.rows[0].count) > 0) {
-      logger.info('Carpark data already seeded, skipping carparks...');
-    } else {
+    const hasMeaningfulCarparks = parseInt(carparkCount.rows[0].count) > 0;
+
+    if (!hasMeaningfulCarparks) {
       // Seed from external APIs if credentials available
       const hasURACreds = process.env.URA_ACCESS_KEY && process.env.URA_TOKEN;
       const hasLTACreds = process.env.LTA_API_KEY;
@@ -37,6 +51,8 @@ export async function seed(): Promise<void> {
         logger.info('Syncing LTA live data (traffic, carparks)...');
         await ltaService.syncToDatabase();
       }
+    } else {
+      logger.info('Carpark data already seeded, skipping carparks...');
     }
 
     logger.info('Database seeding completed');
