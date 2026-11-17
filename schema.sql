@@ -364,7 +364,7 @@ BEGIN
         v_dep_time := v_sg_time::TIME;
         
         -- Get gantry code and name
-        SELECT eg.gantry_code, eg.gantry_name
+        SELECT eg.gantry_code, eg.name
         INTO v_gantry_code, v_gantry_name
         FROM erp_gantries eg
         WHERE eg.id = v_gantry_id AND eg.is_active = true;
