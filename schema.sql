@@ -343,55 +343,55 @@ RETURNS TABLE (
     plus_3min_rate DECIMAL(6,2)
 ) AS $$
 DECLARE
-    i INTEGER;
-    g_id UUID;
-    a_time TIMESTAMPTZ;
-    sg_time TIMESTAMP;
-    dow SMALLINT;
-    dep_time TIME;
-    r_rate DECIMAL(6,2);
-    r_minus3 DECIMAL(6,2);
-    r_plus3 DECIMAL(6,2);
-    r_start_time TIME;
+    v_i INTEGER;
+    v_gantry_id UUID;
+    v_arrival TIMESTAMPTZ;
+    v_sg_time TIMESTAMP;
+    v_dow SMALLINT;
+    v_dep_time TIME;
+    v_rate DECIMAL(6,2);
+    v_minus3 DECIMAL(6,2);
+    v_plus3 DECIMAL(6,2);
+    v_start_time TIME;
 BEGIN
-    FOR i IN 1..array_length(route_gantry_ids, 1) LOOP
-        g_id := route_gantry_ids[i];
-        a_time := arrival_times[i];
-        sg_time := a_time AT TIME ZONE 'Asia/Singapore';
-        dow := EXTRACT(DOW FROM sg_time)::SMALLINT;
-        dep_time := sg_time::TIME;
+    FOR v_i IN 1..array_length(route_gantry_ids, 1) LOOP
+        v_gantry_id := route_gantry_ids[v_i];
+        v_arrival := arrival_times[v_i];
+        v_sg_time := v_arrival AT TIME ZONE 'Asia/Singapore';
+        v_dow := EXTRACT(DOW FROM v_sg_time)::SMALLINT;
+        v_dep_time := v_sg_time::TIME;
         
         -- Find the active rate tier for this gantry at this time
         SELECT ert.rate, ert.start_time,
                (SELECT rate FROM erp_rate_tiers 
-                WHERE gantry_id = g_id 
-                  AND day_of_week = dow 
-                  AND start_time <= (dep_time - INTERVAL '3 minutes')::TIME
-                  AND end_time > (dep_time - INTERVAL '3 minutes')::TIME
+                WHERE gantry_id = v_gantry_id 
+                  AND day_of_week = v_dow 
+                  AND start_time <= (v_dep_time - INTERVAL '3 minutes')::TIME
+                  AND end_time > (v_dep_time - INTERVAL '3 minutes')::TIME
                   AND is_active = true
-                  AND (season_start IS NULL OR season_start <= sg_time::DATE)
-                  AND (season_end IS NULL OR season_end >= sg_time::DATE)
+                  AND (season_start IS NULL OR season_start <= v_sg_time::DATE)
+                  AND (season_end IS NULL OR season_end >= v_sg_time::DATE)
                 ORDER BY start_time DESC LIMIT 1),
                (SELECT rate FROM erp_rate_tiers 
-                WHERE gantry_id = g_id 
-                  AND day_of_week = dow 
-                  AND start_time <= (dep_time + INTERVAL '3 minutes')::TIME
-                  AND end_time > (dep_time + INTERVAL '3 minutes')::TIME
+                WHERE gantry_id = v_gantry_id 
+                  AND day_of_week = v_dow 
+                  AND start_time <= (v_dep_time + INTERVAL '3 minutes')::TIME
+                  AND end_time > (v_dep_time + INTERVAL '3 minutes')::TIME
                   AND is_active = true
-                  AND (season_start IS NULL OR season_start <= sg_time::DATE)
-                  AND (season_end IS NULL OR season_end >= sg_time::DATE)
+                  AND (season_start IS NULL OR season_start <= v_sg_time::DATE)
+                  AND (season_end IS NULL OR season_end >= v_sg_time::DATE)
                 ORDER BY start_time DESC LIMIT 1)
-        INTO r_rate, r_start_time, r_minus3, r_plus3
+        INTO v_rate, v_start_time, v_minus3, v_plus3
         FROM erp_rate_tiers ert
         JOIN erp_gantries eg ON eg.id = ert.gantry_id
-        WHERE ert.gantry_id = g_id
-          AND ert.day_of_week = dow
-          AND ert.start_time <= dep_time
-          AND ert.end_time > dep_time
+        WHERE ert.gantry_id = v_gantry_id
+          AND ert.day_of_week = v_dow
+          AND ert.start_time <= v_dep_time
+          AND ert.end_time > v_dep_time
           AND ert.is_active = true
           AND eg.is_active = true
-          AND (ert.season_start IS NULL OR ert.season_start <= sg_time::DATE)
-          AND (ert.season_end IS NULL OR ert.season_end >= sg_time::DATE)
+          AND (ert.season_start IS NULL OR ert.season_start <= v_sg_time::DATE)
+          AND (ert.season_end IS NULL OR ert.season_end >= v_sg_time::DATE)
         ORDER BY ert.start_time DESC
         LIMIT 1;
         
