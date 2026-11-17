@@ -37,7 +37,8 @@ export function ParkingResults() {
         lat: dest.lat,
         lng: dest.lng,
         radius: 1000,
-        providers: ['HDB', 'URA', 'MALL'],
+        providers: ['HDB', 'URA', 'MALL', 'LTA'],
+        // Keep nearby carparks in the results when live availability is missing.
         minLots: 0,
       });
 
@@ -167,8 +168,8 @@ function CarparkCard({ carpark, onSelect, onNavigate }: {
 
       <div style={metricsStyles}>
         <div style={metricStyles}>
-          <span style={metricValueStyles}>{carpark.availableLots}</span>
-          <span style={metricLabelStyles}>Available</span>
+          <span style={metricValueStyles}>{carpark.status === 'UNKNOWN' ? '—' : carpark.availableLots}</span>
+          <span style={metricLabelStyles}>{carpark.status === 'UNKNOWN' ? 'Availability unknown' : 'Available'}</span>
         </div>
         <div style={metricStyles}>
           <span style={metricValueStyles}>{carpark.totalLots}</span>
@@ -236,8 +237,8 @@ function CarparkDetailSheet({ carpark, onClose, onNavigate }: {
 
         <div style={detailMetricsStyles}>
           <div style={detailMetricStyles}>
-            <span style={detailMetricValueStyles}>{carpark.availableLots}</span>
-            <span style={detailMetricLabelStyles}>Available</span>
+            <span style={detailMetricValueStyles}>{carpark.status === 'UNKNOWN' ? '—' : carpark.availableLots}</span>
+            <span style={detailMetricLabelStyles}>{carpark.status === 'UNKNOWN' ? 'Availability unknown' : 'Available'}</span>
           </div>
           <div style={detailMetricStyles}>
             <span style={detailMetricValueStyles}>{carpark.totalLots}</span>
