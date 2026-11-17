@@ -473,17 +473,11 @@ class ERPService {
       }
 
       let result;
-      if (routeLineWkt) {
-        result = await db.query(
-          `SELECT * FROM calculate_erp_cost($1, $2, $3, $4)`,
-          [gantryIds, departureTime, routeLineWkt, routeDurationSeconds]
-        );
-      } else {
-        result = await db.query(
-          `SELECT * FROM calculate_erp_cost($1, $2)`,
-          [gantryIds, departureTime]
-        );
-      }
+      // Use 2-arg version (departure time for all gantries) - simpler and reliable
+      result = await db.query(
+        `SELECT * FROM calculate_erp_cost($1, $2)`,
+        [gantryIds, departureTime]
+      );
 
       const roadNameMap = new Map(gantries.map(g => [g.id, g.roadName || 'Unknown']));
 
