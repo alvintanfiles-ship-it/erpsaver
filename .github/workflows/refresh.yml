@@ -1,0 +1,17 @@
+name: Refresh Carpark Availability
+
+on:
+  schedule:
+    - cron: '* * * * *'  # Every minute
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call refresh availability API
+        run: |
+          curl -X POST "https://erpsaver-backend.onrender.com/api/v1/carparks/refresh/availability" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            --max-time 30 \
+            --fail || echo "Refresh failed"
