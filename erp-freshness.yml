@@ -1,0 +1,44 @@
+name: Weekly ERP Data Freshness Check
+
+on:
+  schedule:
+    # Runs at 00:00 UTC every Monday (08:00 SGT)
+    - cron: '0 0 * * 1'
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  check-freshness:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: './backend/package-lock.json'
+
+      - name: Install dependencies
+        working-directory: ./backend
+        run: npm ci
+
+      - name: Run freshness check
+        working-directory: ./backend
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          # The script also needs these if it needs to download/parse new files
+          # though the current checkErpFreshness.ts mainly checks headers.
+          # If a change is detected, it will log it. 
+          # In a full CI/CD setup, you'd trigger a re-seed here.
+        run: npm run check:erp-freshness
+
+      - name: Notify on update detected
+        # This is a placeholder for how you'd handle an actual update signal
+        # e.g., if the script exits with a specific code or writes a file
+        run: |
+          if [ -f "backend/erp_update_detected.txt" ]; then
+            echo "New ERP data found on LTA DataMall!"
+            # You could trigger a deployment or a separate sync job here
+          fi
