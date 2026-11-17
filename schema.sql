@@ -353,6 +353,8 @@ DECLARE
     v_minus3 DECIMAL(6,2);
     v_plus3 DECIMAL(6,2);
     v_start_time TIME;
+    v_gantry_code VARCHAR(20);
+    v_gantry_name VARCHAR(255);
 BEGIN
     FOR v_i IN 1..array_length(route_gantry_ids, 1) LOOP
         v_gantry_id := route_gantry_ids[v_i];
@@ -361,41 +363,58 @@ BEGIN
         v_dow := EXTRACT(DOW FROM v_sg_time)::SMALLINT;
         v_dep_time := v_sg_time::TIME;
         
-        -- Find the active rate tier for this gantry at this time
+        -- Get gantry code and name
+        SELECT gantry_code, gantry_name
+        INTO v_gantry_code, v_gantry_name
+        FROM erp_gantries
+        WHERE id = v_gantry_id AND is_active = true;
+        
+        IF NOT FOUND THEN
+            CONTINUE;
+        END IF;
+        
+        -- Find the active rate tier for this gantry at this time (with +/- 3 min boundary rates)
         SELECT ert.rate, ert.start_time,
-               (SELECT rate FROM erp_rate_tiers 
-                WHERE gantry_id = v_gantry_id 
-                  AND day_of_week = v_dow 
-                  AND start_time <= (v_dep_time - INTERVAL '3 minutes')::TIME
-                  AND end_time > (v_dep_time - INTERVAL '3 minutes')::TIME
-                  AND is_active = true
-                  AND (season_start IS NULL OR season_start <= v_sg_time::DATE)
-                  AND (season_end IS NULL OR season_end >= v_sg_time::DATE)
-                ORDER BY start_time DESC LIMIT 1),
-               (SELECT rate FROM erp_rate_tiers 
-                WHERE gantry_id = v_gantry_id 
-                  AND day_of_week = v_dow 
-                  AND start_time <= (v_dep_time + INTERVAL '3 minutes')::TIME
-                  AND end_time > (v_dep_time + INTERVAL '3 minutes')::TIME
-                  AND is_active = true
-                  AND (season_start IS NULL OR season_start <= v_sg_time::DATE)
-                  AND (season_end IS NULL OR season_end >= v_sg_time::DATE)
-                ORDER BY start_time DESC LIMIT 1)
+               (SELECT ert2.rate FROM erp_rate_tiers ert2
+                WHERE ert2.gantry_id = v_gantry_id 
+                  AND ert2.day_of_week = v_dow 
+                  AND ert2.start_time <= (v_dep_time - INTERVAL '3 minutes')::TIME
+                  AND ert2.end_time > (v_dep_time - INTERVAL '3 minutes')::TIME
+                  AND ert2.is_active = true
+                  AND (ert2.season_start IS NULL OR ert2.season_start <= v_sg_time::DATE)
+                  AND (ert2.season_end IS NULL OR ert2.season_end >= v_sg_time::DATE)
+                ORDER BY ert2.start_time DESC LIMIT 1),
+               (SELECT ert3.rate FROM erp_rate_tiers ert3
+                WHERE ert3.gantry_id = v_gantry_id 
+                  AND ert3.day_of_week = v_dow 
+                  AND ert3.start_time <= (v_dep_time + INTERVAL '3 minutes')::TIME
+                  AND ert3.end_time > (v_dep_time + INTERVAL '3 minutes')::TIME
+                  AND ert3.is_active = true
+                  AND (ert3.season_start IS NULL OR ert3.season_start <= v_sg_time::DATE)
+                  AND (ert3.season_end IS NULL OR ert3.season_end >= v_sg_time::DATE)
+                ORDER BY ert3.start_time DESC LIMIT 1)
         INTO v_rate, v_start_time, v_minus3, v_plus3
         FROM erp_rate_tiers ert
-        JOIN erp_gantries eg ON eg.id = ert.gantry_id
         WHERE ert.gantry_id = v_gantry_id
           AND ert.day_of_week = v_dow
           AND ert.start_time <= v_dep_time
           AND ert.end_time > v_dep_time
           AND ert.is_active = true
-          AND eg.is_active = true
           AND (ert.season_start IS NULL OR ert.season_start <= v_sg_time::DATE)
           AND (ert.season_end IS NULL OR ert.season_end >= v_sg_time::DATE)
         ORDER BY ert.start_time DESC
         LIMIT 1;
         
         IF FOUND THEN
+            gantry_id := v_gantry_id;
+            gantry_code := v_gantry_code;
+            gantry_name := v_gantry_name;
+            rate := v_rate;
+            day_of_week := v_dow;
+            applied_start_time := v_start_time;
+            arrival_time := v_arrival;
+            minus_3min_rate := v_minus3;
+            plus_3min_rate := v_plus3;
             RETURN NEXT;
         END IF;
     END LOOP;
