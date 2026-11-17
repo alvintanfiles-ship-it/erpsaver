@@ -17,46 +17,20 @@ export async function migrate(): Promise<void> {
   const schema = readFileSync(schemaPath, 'utf-8');
 
   // Split by semicolon but handle dollar-quoted function bodies ($$...$$)
-  // Track dollar-quote depth to avoid splitting inside function bodies
+  // Track dollar-quote state to avoid splitting inside function bodies
   const statements: string[] = [];
   let current = '';
   let inDollarQuote = false;
-  let dollarTag = '';
   
   for (let i = 0; i < schema.length; i++) {
     const char = schema[i];
     const nextChar = schema[i + 1] || '';
     
-    // Check for dollar quote start/end ($$ or $tag$)
+    // Check for $$ dollar quote start/end
     if (char === '$' && nextChar === '$') {
-      if (!inDollarQuote) {
-        inDollarQuote = true;
-        dollarTag = '$$';
-      } else if (dollarTag === '$$') {
-        inDollarQuote = false;
-        dollarTag = '';
-      }
+      inDollarQuote = !inDollarQuote;
       current += '$$';
       i++; // skip next $
-      continue;
-    }
-    
-    // Check for $tag$ style quotes
-    if (char === '$' && !inDollarQuote && /^[A-Za-z0-9_]*\$/.test(schema.slice(i))) {
-      const match = schema.slice(i).match(/^\$([A-Za-z0-9_]*)\$/);
-      if (match) {
-        inDollarQuote = true;
-        dollarTag = `$${match[1]}$`;
-        current += match[0];
-        i += match[0].length - 1;
-        continue;
-      }
-    }
-    
-    if (char === '$' && inDollarQuote && schema.slice(i).startsWith(dollarTag)) {
-      inDollarQuote = false;
-      current += dollarTag;
-      i += dollarTag.length - 1;
       continue;
     }
     
@@ -65,7 +39,8 @@ export async function migrate(): Promise<void> {
     // Split on semicolon only when not in dollar quote
     if (char === ';' && !inDollarQuote) {
       const stmt = current.trim();
-      if (stmt.length > 0 && !stmt.startsWith('--')) {
+      // Skip only if statement is empty (line comments like -- ... are OK, PostgreSQL ignores them)
+      if (stmt.length > 0) {
         statements.push(stmt);
       }
       current = '';
@@ -74,7 +49,7 @@ export async function migrate(): Promise<void> {
   
   // Add any remaining
   const finalStmt = current.trim();
-  if (finalStmt.length > 0 && !finalStmt.startsWith('--')) {
+  if (finalStmt.length > 0) {
     statements.push(finalStmt);
   }
 
