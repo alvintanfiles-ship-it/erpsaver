@@ -1,4 +1,4 @@
-name: Sync URA Carpark Data
+name: Sync Carpark Data
 
 on:
   schedule:
@@ -9,9 +9,15 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Call URA sync API
+      - name: Sync URA carpark catalog
         run: |
           curl -X POST "https://erpsaver-backend.onrender.com/api/v1/carparks/sync/ura" \
             -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
             --max-time 120 \
-            --fail || echo "Sync failed"
+            --fail
+      - name: Sync LTA and HDB carparks
+        run: |
+          curl -X POST "https://erpsaver-backend.onrender.com/api/v1/carparks/sync/lta" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            --max-time 120 \
+            --fail
