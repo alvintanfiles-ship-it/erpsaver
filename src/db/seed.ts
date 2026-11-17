@@ -157,9 +157,15 @@ async function seedSampleCarparks(): Promise<void> {
 async function seedSampleERP(): Promise<void> {
   logger.info('Inserting authoritative ERP gantries from JSON...');
 
-  // Load from the authoritative JSON with coordinates (copied to /app in container)
+  // Load from the authoritative JSON with coordinates (project root on Render, /app in Docker)
   const fs = await import('fs');
-  const jsonPath = '/app/erp_gantry_rates_2026-09-07.json';
+  const path = await import('path');
+  const fileURLToPath = (await import('url')).fileURLToPath;
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  const projectRoot = path.join(__dirname, '../..');
+  
+  const jsonPath = path.join(projectRoot, 'erp_gantry_rates_2026-09-07.json');
   
   if (!fs.existsSync(jsonPath)) {
     logger.error(`Authoritative JSON not found at ${jsonPath}`);
@@ -170,7 +176,7 @@ async function seedSampleERP(): Promise<void> {
   const gantries = data.gantries;
 
   // Load zone/bearing mapping
-  const zoneMapPath = '/app/gantryZoneMap.json';
+  const zoneMapPath = path.join(projectRoot, 'gantryZoneMap.json');
   let zoneMap: Record<string, { zoneId: string; bearing: number }> = {};
   if (fs.existsSync(zoneMapPath)) {
     zoneMap = JSON.parse(fs.readFileSync(zoneMapPath, 'utf-8'));
