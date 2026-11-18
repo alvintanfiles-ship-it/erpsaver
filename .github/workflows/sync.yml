@@ -2,7 +2,7 @@ name: Sync Carpark Data
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Hourly at minute 0
+    - cron: '0 * * * *'
   workflow_dispatch:
 
 jobs:
@@ -14,10 +14,14 @@ jobs:
           curl -X POST "https://erpsaver-backend.onrender.com/api/v1/carparks/sync/ura" \
             -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
             --max-time 120 \
-            --fail
+            --fail-with-body \
+            --show-error \
+            --write-out "\nHTTP %{http_code}\n"
       - name: Sync LTA and HDB carparks
         run: |
           curl -X POST "https://erpsaver-backend.onrender.com/api/v1/carparks/sync/lta" \
             -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
             --max-time 120 \
-            --fail
+            --fail-with-body \
+            --show-error \
+            --write-out "\nHTTP %{http_code}\n"
